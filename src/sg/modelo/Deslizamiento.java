@@ -9,8 +9,8 @@ public class Deslizamiento extends Emergencia{
         this.extension = extension;
     }
 
-    public Deslizamiento(boolean bloqueaCarretera, int extension, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, Object entidadQueAtiende) {
-        super(id, causa, fecha, tipo, zonas, severidad, entidadQueAtiende);
+    public Deslizamiento(boolean bloqueaCarretera, int extension, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
+        super(id, causa, fecha, tipo, zonas, severidad);
         this.bloqueaCarretera = bloqueaCarretera;
         this.extension = extension;
     }

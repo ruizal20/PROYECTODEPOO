@@ -7,8 +7,8 @@ public class Inundacion extends Emergencia{
         this.nivelDelAgua = nivelDelAgua;
     }
 
-    public Inundacion(int nivelDelAgua, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, Object entidadQueAtiende) {
-        super(id, causa, fecha, tipo, zonas, severidad, entidadQueAtiende);
+    public Inundacion(int nivelDelAgua, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
+        super(id, causa, fecha, tipo, zonas, severidad);
         this.nivelDelAgua = nivelDelAgua;
     }
 

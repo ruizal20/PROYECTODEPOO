@@ -7,8 +7,8 @@ public class Incendio extends Emergencia{
         this.hectareasAfectadas = hectareasAfectadas;
     }
 
-    public Incendio(float hectareasAfectadas, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, Object entidadQueAtiende) {
-        super(id, causa, fecha, tipo, zonas, severidad, entidadQueAtiende);
+    public Incendio(float hectareasAfectadas, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
+        super(id, causa, fecha, tipo, zonas, severidad);
         this.hectareasAfectadas = hectareasAfectadas;
     }
 

@@ -9,8 +9,8 @@ public class Terremoto extends Emergencia{
         this.esReplica = esReplica;
     }
 
-    public Terremoto(float magnitud, boolean esReplica, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, EntidadDeRiesgo entidadQueAtiende) {
-        super(id, causa, fecha, tipo, zonas, severidad, entidadQueAtiende);
+    public Terremoto(float magnitud, boolean esReplica, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
+        super(id, causa, fecha, tipo, zonas, severidad);
         this.magnitud = magnitud;
         this.esReplica = esReplica;
     }

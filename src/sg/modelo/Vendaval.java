@@ -11,8 +11,8 @@ public class Vendaval extends Emergencia{
         this.danosinfraEstructura = danosinfraEstructura;
     }
 
-    public Vendaval(float velocidadViento, boolean afectacionServicios, boolean danosinfraEstructura, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, Object entidadQueAtiende) {
-        super(id, causa, fecha, tipo, zonas, severidad, entidadQueAtiende);
+    public Vendaval(float velocidadViento, boolean afectacionServicios, boolean danosinfraEstructura, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
+        super(id, causa, fecha, tipo, zonas, severidad);
         this.velocidadViento = velocidadViento;
         this.afectacionServicios = afectacionServicios;
         this.danosinfraEstructura = danosinfraEstructura;
