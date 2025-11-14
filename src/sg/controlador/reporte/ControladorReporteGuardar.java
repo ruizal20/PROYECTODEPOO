@@ -1,5 +1,5 @@
 
-package sg.controlador;
+package sg.controlador.reporte;
 
 public class ControladorReporteGuardar {
     ServicioReporte serv = ServicioReporte();
