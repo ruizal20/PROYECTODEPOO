@@ -1,6 +1,8 @@
 
 package sg.modelo;
 
+import java.util.List;
+
 public class EntidadDeRiesgo {
     private int id;
     private String nombre;
@@ -68,7 +70,7 @@ public class EntidadDeRiesgo {
         if (emergenciaQueAtiende.getId() != idEmergencia) {
             return false;
         }else{
-            emergenciaQueAtiende.setCausa(actualizar.getCausa);
+            emergenciaQueAtiende.setCausa(actualizar.getCausa());
             cantEmergAtendidas++;
             return true;
         }
@@ -79,7 +81,19 @@ public class EntidadDeRiesgo {
         disponible = true;
     }
     
-    public void prevencionEmergencia(){
+    public void prevencionEmergencia(String tipo, String causa, String zona, List<Usuario> usuarios){
+        Reporte reporte = new Reporte();
         
+        reporte.setTipoEmergencia(tipo);
+        reporte.setDescripcion(causa);
+        reporte.setUbicacion(zona);
+        reporte.setHeridosVisibles(false);
+        reporte.setUsuarioReporta(null);
+        
+        for (Usuario usuario : usuarios) {
+            if (usuario.getZona().equalsIgnoreCase(zona)) {
+                usuario
+            }
+        }
     }
 }

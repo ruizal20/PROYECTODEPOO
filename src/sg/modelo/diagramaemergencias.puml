@@ -40,7 +40,7 @@ class Vendaval{
     -bool dañosInfraEstructura
 }
 
-class Usuario{
+class Usuario {
     -int cedula
     -String nombre
     -String zona
@@ -57,7 +57,7 @@ class EntidadDeRiesgo{
     -int cantEmergAtendidas
 
     +bool actualizarDatosEmergencia()
-    +void actualizarEstado()
+    +void actualizarEstado(String tipo,String zona,String descripcion)
     +void prevencionEmergencia()
 }
 
@@ -78,9 +78,9 @@ class GestionEmergencia{
     +void crearEmergencia()
     +void crearUsuario()
     +void crearEntidad()
-    +String listarXEmergencia(String xEmergencia)
-    +String listarXUsuario(String xUsuario)
-    +String listarXUbicacion(String xZona)
+    +String listarXEmergencia(String tipo)
+    +String listarXUsuario(String nomUsuario)
+    +String listarXZona(String xZona)
     +String listarXEntidad(String xEntidad)
     +float porcenEmergAtendXEntidad(String xEntidad)
     +float porcenXTipoEmergencia(String xTipo)
