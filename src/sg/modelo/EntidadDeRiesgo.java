@@ -6,17 +6,17 @@ public class EntidadDeRiesgo {
     private String nombre;
     private boolean disponible;
     private Emergencia emergenciaQueAtiende;
-    private int cantEmergAtendida;
+    private int cantEmergAtendidas;
 
     public EntidadDeRiesgo() {
     }
 
-    public EntidadDeRiesgo(int id, String nombre, boolean disponible, Emergencia emergenciaQueAtiende, int cantEmergAtendida) {
+    public EntidadDeRiesgo(int id, String nombre, boolean disponible, Emergencia emergenciaQueAtiende, int cantEmergAtendidas) {
         this.id = id;
         this.nombre = nombre;
         this.disponible = disponible;
         this.emergenciaQueAtiende = emergenciaQueAtiende;
-        this.cantEmergAtendida = cantEmergAtendida;
+        this.cantEmergAtendidas = cantEmergAtendidas;
     }
 
     public int getId() {
@@ -51,29 +51,32 @@ public class EntidadDeRiesgo {
         this.emergenciaQueAtiende = emergenciaQueAtiende;
     }
 
-    public int getCantEmergAtendida() {
-        return cantEmergAtendida;
+    public int getCantEmergAtendidas() {
+        return cantEmergAtendidas;
     }
 
-    public void setCantEmergAtendida(int cantEmergAtendida) {
-        this.cantEmergAtendida = cantEmergAtendida;
+    public void setCantEmergAtendidas(int cantEmergAtendidas) {
+        this.cantEmergAtendidas = cantEmergAtendidas;
     }
 
     @Override
     public String toString() {
-        return "EntidadDeRiesgo{" + "id = " + id + ", nombre = " + nombre + ", disponible = " + disponible + ", emergenciaQueAtiende = " + emergenciaQueAtiende + ", cantEmergAtendida = " + cantEmergAtendida + '}';
+        return "EntidadDeRiesgo{" + "id = " + id + ", nombre = " + nombre + ", disponible = " + disponible + ", emergenciaQueAtiende = " + emergenciaQueAtiende + ", cantEmergAtendida = " + cantEmergAtendidas + '}';
     }
     
-    public boolean actualizarDatosEmergencia(){
-        
+    public boolean actualizarDatosEmergencia(Emergencia actualizar, int idEmergencia){
+        if (emergenciaQueAtiende.getId() != idEmergencia) {
+            return false;
+        }else{
+            emergenciaQueAtiende.setCausa(actualizar.getCausa);
+            cantEmergAtendidas++;
+            return true;
+        }
     }
        
-    public void actualizarEstado(){
-        if (actualizarDatosEmergencia()) {
-            disponible = true;
-        }else{
-            disponible = false;
-        }
+    public void actualizarEstado(){ // Lo llamamos justo despues de que actualice datos
+        emergenciaQueAtiende = null;
+        disponible = true;
     }
     
     public void prevencionEmergencia(){
