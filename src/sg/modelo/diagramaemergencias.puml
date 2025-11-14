@@ -1,0 +1,102 @@
+@startuml
+abstract class Emergencia{
+    #int id
+    #String causa
+    #String fecha
+    #String tipo
+    #String[] zonas
+    #int severidad
+    #reportes
+    #EnttidadDeRiesgo entidadQueAtiende
+
+    +void addReporte()
+    +ArrayList<Reporte> listarReporte()
+    +int contarReporte()
+    +abstract evaluarEmergencia()
+    +abstract porcenEmergencias()
+}
+
+class Inundacion{
+    -int nivelDelAgua
+}
+
+class Terremoto{
+    -float magnitud
+    -bool esReplica
+}
+
+class Deslizamiento{
+    -bool bloqueaCarretera
+    -int extension
+}
+
+class Incendio{
+    -float hectareasAfectadas
+}
+
+class Vendaval{
+    -float velocidadViento
+    -bool afectacionServicios
+    -bool dañosInfraEstructura
+}
+
+class Usuario{
+    -int cedula
+    -String nombre
+    -String zona
+    -String ubicacion
+
+    +void recibirPrevencion()
+}
+
+class EntidadDeRiesgo{
+    -int id
+    -String nombre
+    -bool disponible
+    -Emergencia emergenciaQueAtiende
+    -int cantEmergAtendidas
+
+    +bool actualizarDatosEmergencia()
+    +void actualizarEstado()
+    +void prevencionEmergencia()
+}
+
+class Reporte{
+    -String tipoEmergencia
+    -String ubicacion
+    -String descripcion
+    -bool heridosVisibles
+    -Usuario usuarioReporta
+
+}
+
+class GestionEmergencia{
+    -usuarios
+    -emergencias
+    -entidades
+    
+    +void crearEmergencia()
+    +void crearUsuario()
+    +void crearEntidad()
+    +String listarXEmergencia(String xEmergencia)
+    +String listarXUsuario(String xUsuario)
+    +String listarXUbicacion(String xZona)
+    +String listarXEntidad(String xEntidad)
+    +float porcenEmergAtendXEntidad(String xEntidad)
+    +float porcenXTipoEmergencia(String xTipo)
+}
+
+
+Inundacion --|> Emergencia 
+Terremoto -up-|> Emergencia  
+Deslizamiento --|> Emergencia  
+Incendio --|> Emergencia  
+Vendaval -up-|> Emergencia  
+Reporte "* " -up-* "1  " Emergencia
+Reporte "1 " o-up- "1 " Usuario
+EntidadDeRiesgo "1.." <-up-> "1" Emergencia
+GestionEmergencia "1 " *-down- "* " Usuario 
+GestionEmergencia "1 " *-right- "  * " Emergencia 
+GestionEmergencia "1 " *-up- "1.." EntidadDeRiesgo 
+
+@enduml
