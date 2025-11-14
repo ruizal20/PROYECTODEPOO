@@ -2,7 +2,7 @@
 package sg.controlador.reporte;
 
 public class ControladorReporteGuardar {
-    ServicioReporte serv = ServicioReporte();
+    private ServicioReporte serv = ServicioReporte();
     
 
     public boolean guardar(String tipoEmergencia,String ubicacion,String descripcion, boolean heridosVisibles, Usuario usuarioReporta){
