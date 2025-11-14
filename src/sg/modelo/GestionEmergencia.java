@@ -98,5 +98,23 @@ public class GestionEmergencia {
         return list;
     }
     
+    public float porcenEmergAtendXEntidad(String xEntidad){
+        float porcen = 0;
+        for (EntidadDeRiesgo entidad : entidades) {
+            if (entidad.getNombre().equalsIgnoreCase(xEntidad)) {
+                porcen = (float) (entidad.getCantEmergAtendidas() / emergencias.size() * 100);
+            }
+        }
+        return porcen;
+    }
     
+    public float porcenXTipoEmergencia(String xTipo){
+        float porcen = 0, conta = 0;
+        for (Emergencia emergencia : emergencias) {
+            if (emergencia.getTipo().equalsIgnoreCase(xTipo)) {
+                conta++;
+            }
+        }
+        return (float) (conta / emergencias.size() * 100);
+    }
 }
