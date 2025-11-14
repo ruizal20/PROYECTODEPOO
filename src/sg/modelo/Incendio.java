@@ -1,5 +1,7 @@
 package sg.modelo;
 
+import java.util.ArrayList;
+
 public class Incendio extends Emergencia{
     private float hectareasAfectadas;
 
@@ -7,11 +9,10 @@ public class Incendio extends Emergencia{
         this.hectareasAfectadas = hectareasAfectadas;
     }
 
-    public Incendio(float hectareasAfectadas, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
-        super(id, causa, fecha, tipo, zonas, severidad);
+    public Incendio(float hectareasAfectadas, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
+        super(id, causa, fecha, tipo, zonas, severidad, reportes, entidadQueAtiende);
         this.hectareasAfectadas = hectareasAfectadas;
     }
-
     
 
     public Incendio() {
@@ -39,14 +40,18 @@ public class Incendio extends Emergencia{
 
     @Override
     public void evaluarEmergencia() {
-        if (hectareasAfectadas < 1) {
-            setSeveridad(1);   
-        } else if (hectareasAfectadas < 10) {
-            setSeveridad(2);   
-        } else if (hectareasAfectadas < 50) {
-            setSeveridad(3);   
+        if (hectareasAfectadas < 0) {
+            System.out.println("Las hectáreas afectadas no pueden ser negativas.");
+            setSeveridad(0);
+            return;
+        }
+
+        if (hectareasAfectadas <= 10) {
+            setSeveridad(1);         
+        } else if (hectareasAfectadas <= 100) {
+            setSeveridad(2);          
         } else {
-            setSeveridad(4);   
+            setSeveridad(3);          
         }
     }
 

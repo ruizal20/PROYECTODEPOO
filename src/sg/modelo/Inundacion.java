@@ -1,5 +1,7 @@
 package sg.modelo;
 
+import java.util.ArrayList;
+
 public class Inundacion extends Emergencia{
    private int nivelDelAgua; 
 
@@ -7,10 +9,12 @@ public class Inundacion extends Emergencia{
         this.nivelDelAgua = nivelDelAgua;
     }
 
-    public Inundacion(int nivelDelAgua, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
-        super(id, causa, fecha, tipo, zonas, severidad);
+    public Inundacion(int nivelDelAgua, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
+        super(id, causa, fecha, tipo, zonas, severidad, reportes, entidadQueAtiende);
         this.nivelDelAgua = nivelDelAgua;
     }
+
+    
 
     
 
@@ -39,14 +43,18 @@ public class Inundacion extends Emergencia{
 
     @Override
     public void evaluarEmergencia() {
-        if (nivelDelAgua < 30) {
-            setSeveridad(1);   
-        } else if (nivelDelAgua < 100) {
-            setSeveridad(2);   
-        } else if (nivelDelAgua < 200) {
-            setSeveridad(3);   
+        if (nivelDelAgua < 0) {
+            System.out.println("El nivel del agua no puede ser negativo.");
+            setSeveridad(0);
+            return;
+        }
+
+        if (nivelDelAgua <= 30) {
+            setSeveridad(1);         
+        } else if (nivelDelAgua < 80) {
+            setSeveridad(2);          
         } else {
-            setSeveridad(4);   
+            setSeveridad(3);         
         }
     }
 

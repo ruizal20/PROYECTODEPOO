@@ -1,5 +1,7 @@
 package sg.modelo;
 
+import java.util.ArrayList;
+
 public class Terremoto extends Emergencia{
    private float magnitud;
    private boolean esReplica;
@@ -9,11 +11,13 @@ public class Terremoto extends Emergencia{
         this.esReplica = esReplica;
     }
 
-    public Terremoto(float magnitud, boolean esReplica, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
-        super(id, causa, fecha, tipo, zonas, severidad);
+    public Terremoto(float magnitud, boolean esReplica, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
+        super(id, causa, fecha, tipo, zonas, severidad, reportes, entidadQueAtiende);
         this.magnitud = magnitud;
         this.esReplica = esReplica;
     }
+
+   
 
     
     public Terremoto() {
@@ -55,14 +59,18 @@ public class Terremoto extends Emergencia{
 
     @Override
     public void evaluarEmergencia() {
-        if (magnitud < 4.0f) {
-            setSeveridad(1);     
-        } else if (magnitud < 6.0f) {
-            setSeveridad(2);      
-        } else if (magnitud < 7.5f) {
-            setSeveridad(3);      
+        if (magnitud < 0) {
+            System.out.println("La magnitud no puede ser negativa.");
+            setSeveridad(0);
+            return;
+        }
+
+        if (magnitud <= 4.0f) {
+            setSeveridad(1);          
+        } else if (magnitud <= 6.0f) {
+            setSeveridad(2);          
         } else {
-            setSeveridad(4);      
+            setSeveridad(3);          
         }
     }
 

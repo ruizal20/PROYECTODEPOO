@@ -1,5 +1,7 @@
 package sg.modelo;
 
+import java.util.ArrayList;
+
 public class Deslizamiento extends Emergencia{
     private boolean bloqueaCarretera;
     private int extension;
@@ -9,12 +11,13 @@ public class Deslizamiento extends Emergencia{
         this.extension = extension;
     }
 
-    public Deslizamiento(boolean bloqueaCarretera, int extension, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
-        super(id, causa, fecha, tipo, zonas, severidad);
+    public Deslizamiento(boolean bloqueaCarretera, int extension, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
+        super(id, causa, fecha, tipo, zonas, severidad, reportes, entidadQueAtiende);
         this.bloqueaCarretera = bloqueaCarretera;
         this.extension = extension;
     }
 
+    
     
 
     public Deslizamiento() {
@@ -56,14 +59,22 @@ public class Deslizamiento extends Emergencia{
 
     @Override
     public void evaluarEmergencia() {
-        if (!bloqueaCarretera && extension < 20) {
-            setSeveridad(1);   
-        } else if (extension < 50) {
-            setSeveridad(2);   
-        } else if (extension < 100) {
-            setSeveridad(3);   
+        if (extension < 0) {
+            System.out.println("La extensión no puede ser negativa.");
+            setSeveridad(0);
+            return;
+        }
+              
+        if (extension <= 50) {
+            setSeveridad(1);         
+        } else if (extension <= 200) {
+            if (bloqueaCarretera) {
+                setSeveridad(3);      
+            } else {
+                setSeveridad(2);      
+            }
         } else {
-            setSeveridad(4);   
+            setSeveridad(3);          
         }
     }
 

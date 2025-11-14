@@ -1,5 +1,7 @@
 package sg.modelo;
 
+import java.util.ArrayList;
+
 public class Vendaval extends Emergencia{
     private float velocidadViento;
     private boolean afectacionServicios;
@@ -11,12 +13,14 @@ public class Vendaval extends Emergencia{
         this.danosinfraEstructura = danosinfraEstructura;
     }
 
-    public Vendaval(float velocidadViento, boolean afectacionServicios, boolean danosinfraEstructura, int id, String causa, String fecha, String tipo, String[] zonas, int severidad) {
-        super(id, causa, fecha, tipo, zonas, severidad);
+    public Vendaval(float velocidadViento, boolean afectacionServicios, boolean danosinfraEstructura, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
+        super(id, causa, fecha, tipo, zonas, severidad, reportes, entidadQueAtiende);
         this.velocidadViento = velocidadViento;
         this.afectacionServicios = afectacionServicios;
         this.danosinfraEstructura = danosinfraEstructura;
     }
+
+    
 
     
 
@@ -73,14 +77,23 @@ public class Vendaval extends Emergencia{
 
     @Override
     public void evaluarEmergencia() {
-        if (velocidadViento < 40 && !afectacionServicios && !danosinfraEstructura) {
-            setSeveridad(1);   
-        } else if (velocidadViento < 60) {
-            setSeveridad(2);   
-        } else if (velocidadViento < 80) {
-            setSeveridad(3);   
+        if (velocidadViento < 0) {
+            System.out.println("La velocidad del viento no puede ser negativa.");
+            setSeveridad(0);
+            return;
+        }
+
+        if (velocidadViento < 60 && !afectacionServicios && !danosinfraEstructura) {
+            setSeveridad(1);        
+
+        } else if (velocidadViento >= 60 && velocidadViento < 100 && !danosinfraEstructura) {
+            setSeveridad(2);          
+
+        } else if (velocidadViento >= 100 && danosinfraEstructura) {
+            setSeveridad(3);          
+
         } else {
-            setSeveridad(4);  
+            setSeveridad(3);
         }
     }
 
