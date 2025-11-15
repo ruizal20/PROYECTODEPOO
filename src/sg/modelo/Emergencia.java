@@ -99,9 +99,6 @@ public abstract class Emergencia {
         return reportes;
     }
 
-    /**
-     * @param reportes the reportes to set
-     */
     public void setReportes(ArrayList<Reporte> reportes) {
         this.reportes = reportes;
     }
@@ -119,5 +116,11 @@ public abstract class Emergencia {
         return "Emergencia{" + "id=" + id + ", causa=" + causa + ", fecha=" + fecha + ", tipo=" + tipo + ", zonas=" + zonas + ", severidad=" + severidad + ", reportes=" + reportes + ", entidadQueAtiende=" + entidadQueAtiende + '}';
     }
     
-    
+    public void actualizarDatosEntidad(String tipo, String causa, String fecha, String[] zonas, int severidad){
+        this.tipo = tipo;
+        this.causa = causa;
+        this.fecha = fecha;
+        this.zonas = zonas;
+        this.severidad = severidad;
+    }
 }

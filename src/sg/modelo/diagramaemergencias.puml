@@ -14,9 +14,10 @@ abstract class Emergencia{
     +int contarReporte()
     +abstract evaluarEmergencia()
     +abstract porcenEmergencias()
+    +void actualizarDatosEntidad()
 }
 
-class EmergenciaFactory{
+class EmergenciaFactory<<(Singleton)>>{
     -EmergenciaFactory fabrica
     
     +static EmergenciaFactory getFabrica()
@@ -47,7 +48,7 @@ class Vendaval{
     -bool dañosInfraEstructura
 }
 
-class Usuario {
+class Usuario <<Prototipo>>{
     -int cedula
     -String nombre
     -String zona
@@ -64,7 +65,7 @@ class EntidadDeRiesgo{
     -Emergencia emergenciaQueAtiende
     -int cantEmergAtendidas
 
-    +bool actualizarDatosEmergencia(Emergencia actualizar, int idEmergencia)
+    +bool actualizarDatosEmergencia(int idEmergencia, String tipo, String causa, String fecha, String[] zonas, int severidad)
     +void actualizarEstado()
     +void prevencionEmergencia(String tipo,String causa,String zona, list<Usuario> usuarios)
 }
@@ -77,7 +78,7 @@ class Reporte{
     -Usuario usuarioReporta
 }
 
-class GestionEmergencia{
+class GestionEmergencia <<Singleton>>{
     -usuarios
     -emergencias
     -entidades

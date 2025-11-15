@@ -66,11 +66,12 @@ public class EntidadDeRiesgo {
         return "EntidadDeRiesgo{" + "id = " + id + ", nombre = " + nombre + ", disponible = " + disponible + ", emergenciaQueAtiende = " + emergenciaQueAtiende + ", cantEmergAtendida = " + cantEmergAtendidas + '}';
     }
     
-    public boolean actualizarDatosEmergencia(Emergencia actualizar, int idEmergencia){
+    public boolean actualizarDatosEmergencia(int idEmergencia, String tipo, String causa, String fecha, String[] zonas, int severidad){
         if (emergenciaQueAtiende.getId() != idEmergencia) {
             return false;
         }else{
-            emergenciaQueAtiende.setCausa(actualizar.getCausa());
+            emergenciaQueAtiende.actualizarDatosEntidad(tipo, causa, fecha, zonas, severidad);
+            
             cantEmergAtendidas++;
             return true;
         }

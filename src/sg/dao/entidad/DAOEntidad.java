@@ -6,6 +6,6 @@ import sg.modelo.EntidadDeRiesgo;
 
 public interface DAOEntidad {
     boolean guardar(EntidadDeRiesgo entidad);
-    boolean actualizarDatos();
+    boolean actualizarDatos(EntidadDeRiesgo entidad);
     List<EntidadDeRiesgo> listar();
 }
