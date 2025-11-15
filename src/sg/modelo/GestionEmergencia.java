@@ -4,12 +4,12 @@ package sg.modelo;
 import java.util.ArrayList;
 
 public class GestionEmergencia {
-    private GestionEmergencia instancia;
+    private static GestionEmergencia instancia = null;
     private ArrayList<Usuario> usuarios;
     private ArrayList<Emergencia> emergencias;
     private ArrayList<EntidadDeRiesgo> entidades;
 
-    public GestionEmergencia() {
+    private GestionEmergencia() {
         usuarios = new ArrayList<>();
         emergencias = new ArrayList<>();
         entidades = new ArrayList<>();
@@ -44,7 +44,12 @@ public class GestionEmergencia {
         return "GestionEmergencia{" + "usuarios = " + usuarios + ", emergencias = " + emergencias + ", entidades = " + entidades + '}';
     }
     
-    
+    public static GestionEmergencia getInstancia(){
+        if (instancia == null) {
+            instancia = new GestionEmergencia();
+        }
+        return instancia;
+    }
     
     public void crearEmergencia(Emergencia emergencia){
         emergencias.add(emergencia);

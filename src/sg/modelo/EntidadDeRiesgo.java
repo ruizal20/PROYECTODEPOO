@@ -92,7 +92,7 @@ public class EntidadDeRiesgo {
         
         for (Usuario usuario : usuarios) {
             if (usuario.getZona().equalsIgnoreCase(zona)) {
-                usuario
+                usuario.prevencionEmergencia(reporte);
             }
         }
     }

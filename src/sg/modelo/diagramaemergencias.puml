@@ -9,11 +9,18 @@ abstract class Emergencia{
     #reportes
     #EnttidadDeRiesgo entidadQueAtiende
 
-    +void addReporte()
+    +void addReporte(Reporte reporte)
     +ArrayList<Reporte> listarReporte()
     +int contarReporte()
     +abstract evaluarEmergencia()
     +abstract porcenEmergencias()
+}
+
+class EmergenciaFactory{
+    -EmergenciaFactory fabrica
+    
+    +static EmergenciaFactory getFabrica()
+    + Emergencia getEmergencia)
 }
 
 class Inundacion{
@@ -45,8 +52,9 @@ class Usuario {
     -String nombre
     -String zona
     -String ubicacion
+    -reportes
 
-    +void recibirPrevencion()
+    +void recibirPrevencion(Reporte reporte)
 }
 
 class EntidadDeRiesgo{
@@ -56,9 +64,9 @@ class EntidadDeRiesgo{
     -Emergencia emergenciaQueAtiende
     -int cantEmergAtendidas
 
-    +bool actualizarDatosEmergencia()
-    +void actualizarEstado(String tipo,String zona,String descripcion)
-    +void prevencionEmergencia()
+    +bool actualizarDatosEmergencia(Emergencia actualizar, int idEmergencia)
+    +void actualizarEstado()
+    +void prevencionEmergencia(String tipo,String causa,String zona, list<Usuario> usuarios)
 }
 
 class Reporte{
@@ -67,7 +75,6 @@ class Reporte{
     -String descripcion
     -bool heridosVisibles
     -Usuario usuarioReporta
-
 }
 
 class GestionEmergencia{
@@ -75,9 +82,9 @@ class GestionEmergencia{
     -emergencias
     -entidades
     
-    +void crearEmergencia()
-    +void crearUsuario()
-    +void crearEntidad()
+    +void crearEmergencia(Emergencia xEmergencia)
+    +void crearUsuario(Usuario xUsuario)
+    +void crearEntidad(Entidad xEntidad)
     +String listarXEmergencia(String tipo)
     +String listarXUsuario(String nomUsuario)
     +String listarXZona(String xZona)
@@ -93,7 +100,8 @@ Deslizamiento --|> Emergencia
 Incendio --|> Emergencia  
 Vendaval -up-|> Emergencia  
 Reporte "* " -up-* "1  " Emergencia
-Reporte "1 " o-up- "1 " Usuario
+Reporte "* " -up- "*  " Usuario
+Emergencia .right.. EmergenciaFactory : uses
 EntidadDeRiesgo "1.." <-up-> "1" Emergencia
 GestionEmergencia "1 " *-down- "* " Usuario 
 GestionEmergencia "1 " *-right- "  * " Emergencia 
