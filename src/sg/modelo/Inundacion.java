@@ -14,24 +14,13 @@ public class Inundacion extends Emergencia{
         this.nivelDelAgua = nivelDelAgua;
     }
 
-    
-
-    
-
     public Inundacion() {
     }
-
    
-    /**
-     * @return the nivelDelAgua
-     */
     public int getNivelDelAgua() {
         return nivelDelAgua;
     }
 
-    /**
-     * @param nivelDelAgua the nivelDelAgua to set
-     */
     public void setNivelDelAgua(int nivelDelAgua) {
         this.nivelDelAgua = nivelDelAgua;
     }
@@ -44,7 +33,6 @@ public class Inundacion extends Emergencia{
     @Override
     public void evaluarEmergencia() {
         if (nivelDelAgua < 0) {
-            System.out.println("El nivel del agua no puede ser negativo.");
             setSeveridad(0);
             return;
         }

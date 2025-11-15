@@ -47,93 +47,54 @@ public abstract class Emergencia {
 
     public abstract float porcenEmergencias();
 
-    /**
-     * @return the id
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * @return the causa
-     */
     public String getCausa() {
         return causa;
     }
 
-    /**
-     * @param causa the causa to set
-     */
     public void setCausa(String causa) {
         this.causa = causa;
     }
 
-    /**
-     * @return the fecha
-     */
     public String getFecha() {
         return fecha;
     }
 
-    /**
-     * @param fecha the fecha to set
-     */
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    /**
-     * @return the tipo
-     */
     public String getTipo() {
         return tipo;
     }
 
-    /**
-     * @param tipo the tipo to set
-     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    /**
-     * @return the zonas
-     */
     public String[] getZonas() {
         return zonas;
     }
 
-    /**
-     * @param zonas the zonas to set
-     */
     public void setZonas(String[] zonas) {
         this.zonas = zonas;
     }
 
-    /**
-     * @return the severidad
-     */
     public int getSeveridad() {
         return severidad;
     }
 
-    /**
-     * @param severidad the severidad to set
-     */
     public void setSeveridad(int severidad) {
         this.severidad = severidad;
     }
 
-    /**
-     * @return the reportes
-     */
     public ArrayList<Reporte> getReportes() {
         return reportes;
     }
@@ -145,16 +106,10 @@ public abstract class Emergencia {
         this.reportes = reportes;
     }
 
-    /**
-     * @return the entidadQueAtiende
-     */
     public EntidadDeRiesgo getEntidadQueAtiende() {
         return entidadQueAtiende;
     }
 
-    /**
-     * @param entidadQueAtiende the entidadQueAtiende to set
-     */
     public void setEntidadQueAtiende(EntidadDeRiesgo entidadQueAtiende) {
         this.entidadQueAtiende = entidadQueAtiende;
     }

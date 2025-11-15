@@ -14,21 +14,13 @@ public class Incendio extends Emergencia{
         this.hectareasAfectadas = hectareasAfectadas;
     }
     
-
     public Incendio() {
     }
 
-    
-    /**
-     * @return the hectareasAfectadas
-     */
     public float getHectareasAfectadas() {
         return hectareasAfectadas;
     }
 
-    /**
-     * @param hectareasAfectadas the hectareasAfectadas to set
-     */
     public void setHectareasAfectadas(float hectareasAfectadas) {
         this.hectareasAfectadas = hectareasAfectadas;
     }
@@ -41,7 +33,6 @@ public class Incendio extends Emergencia{
     @Override
     public void evaluarEmergencia() {
         if (hectareasAfectadas < 0) {
-            System.out.println("Las hectáreas afectadas no pueden ser negativas.");
             setSeveridad(0);
             return;
         }

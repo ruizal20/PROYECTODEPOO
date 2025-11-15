@@ -20,52 +20,29 @@ public class Vendaval extends Emergencia{
         this.danosinfraEstructura = danosinfraEstructura;
     }
 
-    
-
-    
-
     public Vendaval() {
     }
 
-    
-    /**
-     * @return the velocidadViento
-     */
     public float getVelocidadViento() {
         return velocidadViento;
     }
 
-    /**
-     * @param velocidadViento the velocidadViento to set
-     */
     public void setVelocidadViento(float velocidadViento) {
         this.velocidadViento = velocidadViento;
     }
 
-    /**
-     * @return the afectacionServicios
-     */
     public boolean isAfectacionServicios() {
         return afectacionServicios;
     }
 
-    /**
-     * @param afectacionServicios the afectacionServicios to set
-     */
     public void setAfectacionServicios(boolean afectacionServicios) {
         this.afectacionServicios = afectacionServicios;
     }
 
-    /**
-     * @return the danosinfraEstructura
-     */
     public boolean isDanosinfraEstructura() {
         return danosinfraEstructura;
     }
 
-    /**
-     * @param danosinfraEstructura the danosinfraEstructura to set
-     */
     public void setDanosinfraEstructura(boolean danosinfraEstructura) {
         this.danosinfraEstructura = danosinfraEstructura;
     }

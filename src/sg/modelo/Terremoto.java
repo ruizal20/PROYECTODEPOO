@@ -17,37 +17,21 @@ public class Terremoto extends Emergencia{
         this.esReplica = esReplica;
     }
 
-   
-
-    
     public Terremoto() {
     }
 
-   
-    /**
-     * @return the magnitud
-     */
     public float getMagnitud() {
         return magnitud;
     }
 
-    /**
-     * @param magnitud the magnitud to set
-     */
     public void setMagnitud(float magnitud) {
         this.magnitud = magnitud;
     }
 
-    /**
-     * @return the esReplica
-     */
     public boolean isEsReplica() {
         return esReplica;
     }
 
-    /**
-     * @param esReplica the esReplica to set
-     */
     public void setEsReplica(boolean esReplica) {
         this.esReplica = esReplica;
     }

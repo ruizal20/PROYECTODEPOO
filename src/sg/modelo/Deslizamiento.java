@@ -60,7 +60,6 @@ public class Deslizamiento extends Emergencia{
     @Override
     public void evaluarEmergencia() {
         if (extension < 0) {
-            System.out.println("La extensión no puede ser negativa.");
             setSeveridad(0);
             return;
         }
