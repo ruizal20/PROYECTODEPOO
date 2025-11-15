@@ -44,7 +44,6 @@ public class Terremoto extends Emergencia{
     @Override
     public void evaluarEmergencia() {
         if (magnitud < 0) {
-            System.out.println("La magnitud no puede ser negativa.");
             setSeveridad(0);
             return;
         }

@@ -55,7 +55,6 @@ public class Vendaval extends Emergencia{
     @Override
     public void evaluarEmergencia() {
         if (velocidadViento < 0) {
-            System.out.println("La velocidad del viento no puede ser negativa.");
             setSeveridad(0);
             return;
         }
