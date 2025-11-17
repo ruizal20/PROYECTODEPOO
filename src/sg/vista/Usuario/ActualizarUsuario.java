@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package sg.vista;
+package sg.vista.Usuario;
 
 /**
  *
  * @author anyor
  */
-public class RegistroUsuario extends javax.swing.JFrame {
+public class ActualizarUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroUsuario
      */
-    public RegistroUsuario() {
+    public ActualizarUsuario() {
         initComponents();
     }
 
@@ -108,7 +108,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 147, 155, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 255, 153));
-        jButton2.setText("Registrarse");
+        jButton2.setText("Actualizar");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 102, 32));
 
         jButton3.setText("Cancelar");
@@ -163,20 +163,21 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActualizarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActualizarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActualizarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActualizarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroUsuario().setVisible(true);
+                new ActualizarUsuario().setVisible(true);
             }
         });
     }
