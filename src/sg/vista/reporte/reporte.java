@@ -1,27 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package sg.vista.reporte;
 
 import javax.swing.JOptionPane;
 import sg.controlador.reporte.ControladorReporteGuardar;
 import sg.modelo.Usuario;
-
-/**
- *
- * @author anyor
- */
 public class reporte extends javax.swing.JFrame {
 
     Usuario usuario;
-
-    /**
-     * Creates new form reportaremergencia
-     */
     public reporte(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
+        lblNombredequienreporta.setText(usuario.getNombre());
     }
 
     /**
@@ -242,7 +230,7 @@ public class reporte extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String emergencia = (String) comboemergencia.getSelectedItem();
+        String emergencia = comboemergencia.getSelectedItem().toString();
         String descripcion = txtDescripcion.getText();
         boolean heridos;
         if (radiosi.isSelected()) {
@@ -255,6 +243,7 @@ public class reporte extends javax.swing.JFrame {
         String ubicacion = txtUbicacion.getText();
 
         ControladorReporteGuardar control = new ControladorReporteGuardar();
+        
         if (control.guardar(emergencia, ubicacion,zona, descripcion, heridos, usuario)) {
             JOptionPane.showMessageDialog(null, "EMERGENCIA REPORTADA CON ÉXITO\n"
                     + "\n"
