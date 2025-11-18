@@ -14,6 +14,10 @@ public class GestionEmergencia {
         emergencias = new ArrayList<>();
         entidades = new ArrayList<>();
     }
+    
+    public void cargarDatos(){
+        usuarios = controladorusu
+    }
 
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
