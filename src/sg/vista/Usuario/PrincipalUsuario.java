@@ -163,8 +163,14 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         inicio.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 92, 135, 202));
 
         jButton3.setBackground(new java.awt.Color(219, 236, 244));
-        jButton3.setText("jButton1");
-        inicio.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 92, 135, 202));
+        jButton3.setText("Reportar emergencia");
+        jButton3.setActionCommand("");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        inicio.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 92, 140, 202));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/User_Circle - copia.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -330,6 +336,11 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         f.setVisible(true);
         
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

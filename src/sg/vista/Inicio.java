@@ -5,12 +5,15 @@
 package sg.vista;
 
 import sg.controlador.entidad.ControladorEntidadDeRiesgoGuardar;
+import sg.controlador.entidad.ControladorEntidadEntrar;
+import sg.controlador.entidad.ControladorEntidadObtener;
 import sg.controlador.usuario.ControladorUsuarioGuardar;
 import sg.controlador.usuario.ControladorUsuarioLogin;
 import sg.controlador.usuario.ControladorUsuarioObtener;
 import sg.vista.Usuario.IniciarSesionUsuario;
 import sg.vista.Usuario.RegistroUsuario;
 import sg.vista.entidad.RegistrarEntidad;
+import sg.vista.entidad.iniciarsesionentidad;
 
 /**
  *
@@ -21,6 +24,8 @@ public class Inicio extends javax.swing.JFrame {
     ControladorUsuarioLogin controlLogin = new ControladorUsuarioLogin();
     ControladorUsuarioObtener controlObtener = new ControladorUsuarioObtener();
     ControladorEntidadDeRiesgoGuardar controlEntiGuar = new ControladorEntidadDeRiesgoGuardar();
+    ControladorEntidadEntrar controlEntiEntrar = new ControladorEntidadEntrar();
+    ControladorEntidadObtener controlEntiObtener = new ControladorEntidadObtener();
 
     /**
      * Creates new form Inicio
@@ -66,6 +71,11 @@ public class Inicio extends javax.swing.JFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/User_Circle.png"))); // NOI18N
         jButton4.setText("Entidad");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 150, 40));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/User_Circle.png"))); // NOI18N
@@ -126,6 +136,12 @@ public class Inicio extends javax.swing.JFrame {
         RegistrarEntidad f = new RegistrarEntidad(controlEntiGuar);
         f.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        iniciarsesionentidad f = new iniciarsesionentidad(controlEntiEntrar,controlEntiObtener);
+        f.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

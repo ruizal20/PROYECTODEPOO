@@ -33,4 +33,32 @@ public class ServicioEntidadDeRiesgo {
         }
         return list;
     }
+    
+    public boolean entrar(int id){
+        DAOEntidad dao = new DAOEntidadArchivo();
+        List<EntidadDeRiesgo> entidades = dao.listar();
+        boolean correcto=false;
+        
+        for (EntidadDeRiesgo entidad : entidades) {
+           if(entidad.getId()==id){
+               correcto=true;
+           }
+        }
+        
+        return correcto;
+    }
+    
+    public EntidadDeRiesgo getOne(int id){
+         DAOEntidad dao = new DAOEntidadArchivo();
+        List<EntidadDeRiesgo> entidades = dao.listar();
+        EntidadDeRiesgo e = null;
+       
+        
+        for (EntidadDeRiesgo entidad : entidades) {
+           if(entidad.getId()==id){
+               e=entidad;
+           }
+        }
+        return e;
+    }
 }
