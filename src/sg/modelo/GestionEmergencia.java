@@ -4,7 +4,6 @@ package sg.modelo;
 import java.util.ArrayList;
 import sg.controlador.emergencia.ControladorEmergenciaCargar;
 import sg.controlador.entidad.ControladorEntidadCargar;
-import sg.controlador.reporte.ControladorReporteCargar;
 import sg.controlador.usuario.ControladorUsuarioCargar;
 
 public class GestionEmergencia {
