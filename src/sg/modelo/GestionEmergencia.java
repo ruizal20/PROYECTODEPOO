@@ -163,10 +163,18 @@ public class GestionEmergencia {
             String fecha = LocalDate.now();
             String[] zonas;
             zonas[0]=zona;
-                   
-            conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0, reporte, entidadQueAtiende)
+            ArrayList<Reporte> reportes = new ArrayList<>();
+            reportes.add(reporte);
+            
+            EntidadDeRiesgo entidadQueAtiende = AsignarEntidad();
+                       
+            conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0,reportes , entidadQueAtiende)
 
         }
 
+    }
+    
+    public EntidadDeRiesgo AsignarEntidad(){
+        
     }
 }
