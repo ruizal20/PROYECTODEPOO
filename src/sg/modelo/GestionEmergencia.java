@@ -2,6 +2,10 @@
 package sg.modelo;
 
 import java.util.ArrayList;
+import sg.controlador.emergencia.ControladorEmergenciaCargar;
+import sg.controlador.entidad.ControladorEntidadCargar;
+import sg.controlador.reporte.ControladorReporteCargar;
+import sg.controlador.usuario.ControladorUsuarioCargar;
 
 public class GestionEmergencia {
     private static GestionEmergencia instancia = null;
@@ -13,10 +17,6 @@ public class GestionEmergencia {
         usuarios = new ArrayList<>();
         emergencias = new ArrayList<>();
         entidades = new ArrayList<>();
-    }
-    
-    public void cargarDatos(){
-        usuarios = controladorusu
     }
 
     public ArrayList<Usuario> getUsuarios() {
@@ -125,5 +125,15 @@ public class GestionEmergencia {
             }
         }
         return (float) (conta / emergencias.size() * 100);
+    }
+    
+    public void cargarDatos(){
+        ControladorUsuarioCargar cUsuario = new ControladorUsuarioCargar();
+        ControladorEmergenciaCargar cEmergencia = new ControladorEmergenciaCargar();
+        ControladorEntidadCargar cEntidad = new ControladorEntidadCargar();
+        
+        usuarios = cUsuario.cargar();
+        emergencias = cEmergencia.cargar();
+        entidades = cEntidad.cargar();
     }
 }
