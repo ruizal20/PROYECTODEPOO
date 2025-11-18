@@ -161,7 +161,8 @@ public class GestionEmergencia {
             ControladorEmergenciaGuardar conEmeGua = new ControladorEmergenciaGuardar();
             int id = emergencias.size()+1;
             String fecha = LocalDate.now();
-            String[]
+            String[] zonas;
+            zonas[0]=zona;
                    
             conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0, reporte, entidadQueAtiende)
 
