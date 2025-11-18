@@ -4,6 +4,7 @@ public class Reporte{
     
     private String tipoEmergencia;
     private String ubicacion;
+    private String zona;
     private String descripcion;
     private boolean heridosVisibles;
     private Usuario usuarioReporta;
@@ -11,9 +12,10 @@ public class Reporte{
     public Reporte() {
     }
 
-    public Reporte(String tipoEmergencia, String ubicacion, String descripcion, boolean heridosVisibles, Usuario usuarioReporta) {
+    public Reporte(String tipoEmergencia,String zona, String ubicacion, String descripcion, boolean heridosVisibles, Usuario usuarioReporta) {
         this.tipoEmergencia = tipoEmergencia;
         this.ubicacion = ubicacion;
+        this.zona=zona;
         this.descripcion = descripcion;
         this.heridosVisibles = heridosVisibles;
         this.usuarioReporta = usuarioReporta;
@@ -59,10 +61,22 @@ public class Reporte{
         this.usuarioReporta = usuarioReporta;
     }
 
+    public String getZona() {
+        return zona;
+    }
+
+    public void setZona(String zona) {
+        this.zona = zona;
+    }
+
     @Override
     public String toString() {
-        return "Reporte{" + "tipoEmergencia=" + tipoEmergencia + ", ubicacion=" + ubicacion + ", descripcion=" + descripcion + ", heridosVisibles=" + heridosVisibles + ", usuarioReporta=" + usuarioReporta + '}';
+        return "Reporte{" + "tipoEmergencia=" + tipoEmergencia + ", ubicacion=" + ubicacion + ", zona=" + zona + ", descripcion=" + descripcion + ", heridosVisibles=" + heridosVisibles + ", usuarioReporta=" + usuarioReporta + '}';
     }
+    
+    
+
+
     
     
 }

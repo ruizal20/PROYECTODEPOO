@@ -16,6 +16,7 @@ public class GestionEmergencia {
         usuarios = new ArrayList<>();
         emergencias = new ArrayList<>();
         entidades = new ArrayList<>();
+        cargarDatos();
     }
 
     public ArrayList<Usuario> getUsuarios() {
@@ -134,5 +135,11 @@ public class GestionEmergencia {
         usuarios = cUsuario.cargar();
         emergencias = cEmergencia.cargar();
         entidades = cEntidad.cargar();
+    }
+    
+    public void gestionarEmergencia(Reporte reporte){
+        String emergencia= reporte.getTipoEmergencia();
+        string zona = reporte.getZona();
+        if()
     }
 }

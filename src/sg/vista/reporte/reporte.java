@@ -255,7 +255,7 @@ public class reporte extends javax.swing.JFrame {
         String ubicacion = txtUbicacion.getText();
 
         ControladorReporteGuardar control = new ControladorReporteGuardar();
-        if (control.guardar(emergencia, ubicacion, descripcion, heridos, usuario)) {
+        if (control.guardar(emergencia, ubicacion,zona, descripcion, heridos, usuario)) {
             JOptionPane.showMessageDialog(null, "EMERGENCIA REPORTADA CON ÉXITO\n"
                     + "\n"
                     + "PRONTO LLEGRÁ UNA DE NUESTRAS ENTIDADES DE GESTIÓN DE RIESGOS A SU ZONA PARA ATENDER LA EMERGENCIA");
