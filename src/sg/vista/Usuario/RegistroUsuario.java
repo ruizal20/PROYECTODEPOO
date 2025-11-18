@@ -204,7 +204,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         }
         
         if(controlador.guardar(cedula, nombre, zona, ubicacion)){
-            JOptionPane.showConfirmDialog(null,"Usuario creado con exito \n su usuario es su nombre y su scontraseña su cedula");
+            JOptionPane.showConfirmDialog(null,"Usuario creado con exito \n su usuario es:" + nombre+" \n y su contraseña :"+cedula);
         }
         else{
             JOptionPane.showMessageDialog(null, "Error al crear el usuario");

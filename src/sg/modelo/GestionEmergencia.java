@@ -2,6 +2,7 @@
 package sg.modelo;
 
 import java.util.ArrayList;
+import sg.controlador.usuario.ControladorUsuarioCargar;
 
 public class GestionEmergencia {
     private static GestionEmergencia instancia = null;
@@ -16,7 +17,8 @@ public class GestionEmergencia {
     }
     
     public void cargarDatos(){
-        usuarios = controladorusu
+        ControladorUsuarioCargar conUsu = new ControladorUsuarioCargar();
+        usuarios = conUsu.cargar();
     }
 
     public ArrayList<Usuario> getUsuarios() {
