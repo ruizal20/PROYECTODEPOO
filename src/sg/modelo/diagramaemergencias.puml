@@ -15,6 +15,7 @@ abstract class Emergencia{
     +abstract evaluarEmergencia()
     +abstract porcenEmergencias()
     +void actualizarDatosEntidad()
+    
 }
 
 class EmergenciaFactory<<(Singleton)>>{
@@ -90,6 +91,7 @@ class GestionEmergencia <<Singleton>>{
     +String listarXUsuario(String nomUsuario)
     +String listarXZona(String xZona)
     +String listarXEntidad(String xEntidad)
+    +void gestionEmergencia(Reporte reporte)
     +float porcenEmergAtendXEntidad(String xEntidad)
     +float porcenXTipoEmergencia(String xTipo)
 }
