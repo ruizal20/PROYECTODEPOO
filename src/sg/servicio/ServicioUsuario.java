@@ -33,4 +33,35 @@ public class ServicioUsuario {
         }
         return list;
     }
+    
+    public boolean iniciarSesion(String usuario, String contrasena){
+        System.out.println("llego al servicio");
+        DAOUsuario dao = new DAOUsuarioArchivo();
+        List<Usuario> usuarios = dao.listar();
+        boolean correcto = false;
+        int contra = Integer.parseInt(contrasena);
+        
+        for (Usuario u : usuarios) {
+            if(u.getNombre().equals(usuario) && u.getCedula()==contra){
+                correcto = true;
+            }
+        }
+        
+        return correcto;
+    }
+    
+    public Usuario getUsuario(int cedula){
+        DAOUsuario dao = new DAOUsuarioArchivo();
+        List<Usuario> usuarios = dao.listar();
+        Usuario usuario = null;
+      
+        for (Usuario u : usuarios) {
+            if(u.getCedula()==cedula){
+                usuario= u;
+            }
+            
+        }
+        
+        return usuario;
+    }
 }

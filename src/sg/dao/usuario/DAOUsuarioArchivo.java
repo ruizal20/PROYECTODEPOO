@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import sg.modelo.Usuario;
 
 public class DAOUsuarioArchivo implements DAOUsuario{
-    private String archivo = "Usuario.doc";
+    private String archivo = "Usuario.data";
 
     @Override
     public boolean guardar(Usuario usuario) {
@@ -48,6 +48,7 @@ public class DAOUsuarioArchivo implements DAOUsuario{
     @Override
     public List<Usuario> listar() {
         List<Usuario> usuarios = null;
+        System.out.println("llego al dao");
         
         try{
             FileInputStream input = new FileInputStream(archivo);

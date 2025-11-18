@@ -15,7 +15,7 @@ import sg.modelo.EntidadDeRiesgo;
 
 public class DAOEntidadArchivo implements DAOEntidad{
     
-    private String archivo = "entidad.doc";
+    private String archivo = "entidad.data";
 
     @Override
     public boolean guardar(EntidadDeRiesgo entidad) {

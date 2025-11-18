@@ -4,17 +4,22 @@
  */
 package sg.vista.Usuario;
 
-/**
- *
- * @author anyor
- */
+import sg.controlador.usuario.ControladorUsuarioLogin;
+import sg.controlador.usuario.ControladorUsuarioObtener;
+import sg.modelo.Usuario;
+
+
 public class IniciarSesionUsuario extends javax.swing.JFrame {
+    ControladorUsuarioLogin controlador;
+    ControladorUsuarioObtener con2;
 
     /**
      * Creates new form IniciarSesionUsuario
      */
-    public IniciarSesionUsuario() {
+    public IniciarSesionUsuario(ControladorUsuarioLogin controlador, ControladorUsuarioObtener con2) {
         initComponents();
+        this.controlador = controlador;
+        this.con2 = con2;
     }
 
     /**
@@ -29,11 +34,11 @@ public class IniciarSesionUsuario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JTextField();
+        btnIniciarSesionUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +66,7 @@ public class IniciarSesionUsuario extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/User_Circle.png"))); // NOI18N
 
-        jTextField1.setBackground(new java.awt.Color(219, 236, 244));
+        txtUsuario.setBackground(new java.awt.Color(219, 236, 244));
 
         jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Usuario");
@@ -69,10 +74,15 @@ public class IniciarSesionUsuario extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Contraseña");
 
-        jTextField2.setBackground(new java.awt.Color(219, 236, 244));
+        txtContrasena.setBackground(new java.awt.Color(219, 236, 244));
 
-        jButton1.setBackground(new java.awt.Color(204, 255, 204));
-        jButton1.setText("Ingresar");
+        btnIniciarSesionUsuario.setBackground(new java.awt.Color(204, 255, 204));
+        btnIniciarSesionUsuario.setText("Ingresar");
+        btnIniciarSesionUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSesionUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,14 +98,14 @@ public class IniciarSesionUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addComponent(jLabel3))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnIniciarSesionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,18 +119,31 @@ public class IniciarSesionUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel2))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(26, 26, 26)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIniciarSesionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIniciarSesionUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionUsuarioActionPerformed
+        // TODO add your handling code here:
+        if(controlador.iniciarSesion(txtUsuario.getText(),txtContrasena.getText())){
+            int cedula=Integer.parseInt(txtContrasena.getText());
+            Usuario u = con2.getOne(cedula);
+            PrincipalUsuario f = new PrincipalUsuario(u);
+            f.setVisible(true);
+        }
+        else{
+            System.out.println("usuario no encontrado");
+        }
+    }//GEN-LAST:event_btnIniciarSesionUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,19 +175,19 @@ public class IniciarSesionUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IniciarSesionUsuario().setVisible(true);
+                //new IniciarSesionUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIniciarSesionUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

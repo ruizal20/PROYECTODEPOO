@@ -4,17 +4,26 @@
  */
 package sg.vista.Usuario;
 
+import java.awt.CardLayout;
+import sg.modelo.Usuario;
+
 /**
  *
  * @author anyor
  */
 public class PrincipalUsuario extends javax.swing.JFrame {
+    Usuario usuario;
+    
 
     /**
      * Creates new form PrincipalUsuario
      */
-    public PrincipalUsuario() {
+    public PrincipalUsuario(Usuario u) {
         initComponents();
+        this.usuario=u;
+        lblNombre.setText(u.getNombre());
+        CardLayout c1 = (CardLayout) contenido.getLayout();
+        c1.show(contenido, "card2");
     }
 
     /**
@@ -29,7 +38,7 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
         Cuenta = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
@@ -57,8 +66,8 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel1.setText("BIENVENID@");
 
-        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel3.setText("nombre");
+        lblNombre.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        lblNombre.setText("nombre");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,7 +77,7 @@ public class PrincipalUsuario extends javax.swing.JFrame {
                 .addGap(92, 92, 92)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(lblNombre)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -77,7 +86,7 @@ public class PrincipalUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -98,10 +107,20 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         jButton9.setText("Editar cuenta");
         jButton9.setBorder(null);
         jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setBackground(new java.awt.Color(219, 236, 244));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/atras.png"))); // NOI18N
         jButton10.setText("Atras");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CuentaLayout = new javax.swing.GroupLayout(Cuenta);
         Cuenta.setLayout(CuentaLayout);
@@ -148,6 +167,11 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         inicio.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 92, 135, 202));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/User_Circle - copia.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         inicio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 6, -1, -1));
 
         jLabel5.setText("Perfil");
@@ -177,6 +201,11 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         jButton4.setText("Cuenta");
         jButton4.setBorder(null);
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/Circle_Help.png"))); // NOI18N
@@ -192,6 +221,11 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(219, 236, 244));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/atras.png"))); // NOI18N
         jButton5.setText("Atras");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(255, 204, 204));
         jButton7.setText("Salir");
@@ -266,6 +300,37 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        CardLayout c1 = (CardLayout) contenido.getLayout();
+        c1.show(contenido, "card3");
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        CardLayout c1 = (CardLayout) contenido.getLayout();
+        c1.show(contenido, "card4");
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        CardLayout c1 = (CardLayout) contenido.getLayout();
+        c1.show(contenido, "card2");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        CardLayout c1 = (CardLayout) contenido.getLayout();
+        c1.show(contenido, "card3");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        ActualizarUsuario f = new ActualizarUsuario(usuario);
+        f.setVisible(true);
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -296,7 +361,7 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalUsuario().setVisible(true);
+                //new PrincipalUsuario().setVisible(true);
             }
         });
     }
@@ -318,10 +383,10 @@ public class PrincipalUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblNombre;
     // End of variables declaration//GEN-END:variables
 }

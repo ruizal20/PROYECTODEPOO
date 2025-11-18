@@ -4,11 +4,23 @@
  */
 package sg.vista;
 
+import sg.controlador.entidad.ControladorEntidadDeRiesgoGuardar;
+import sg.controlador.usuario.ControladorUsuarioGuardar;
+import sg.controlador.usuario.ControladorUsuarioLogin;
+import sg.controlador.usuario.ControladorUsuarioObtener;
+import sg.vista.Usuario.IniciarSesionUsuario;
+import sg.vista.Usuario.RegistroUsuario;
+import sg.vista.entidad.RegistrarEntidad;
+
 /**
  *
  * @author anyor
  */
 public class Inicio extends javax.swing.JFrame {
+    ControladorUsuarioGuardar controlUsuGuar = new ControladorUsuarioGuardar();
+    ControladorUsuarioLogin controlLogin = new ControladorUsuarioLogin();
+    ControladorUsuarioObtener controlObtener = new ControladorUsuarioObtener();
+    ControladorEntidadDeRiesgoGuardar controlEntiGuar = new ControladorEntidadDeRiesgoGuardar();
 
     /**
      * Creates new form Inicio
@@ -68,6 +80,11 @@ public class Inicio extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/icoaraegistrarse.png"))); // NOI18N
         jButton2.setText("Registro entidad");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, 40));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/icoaraegistrarse.png"))); // NOI18N
@@ -90,15 +107,25 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        RegistroUsuario f = new RegistroUsuario(controlUsuGuar);
+        f.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        IniciarSesionUsuario f = new IniciarSesionUsuario(controlLogin, controlObtener);
+        f.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        RegistrarEntidad f = new RegistrarEntidad(controlEntiGuar);
+        f.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

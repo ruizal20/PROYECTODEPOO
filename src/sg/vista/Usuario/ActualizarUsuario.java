@@ -4,17 +4,25 @@
  */
 package sg.vista.Usuario;
 
+import sg.modelo.Usuario;
+
 /**
  *
  * @author anyor
  */
 public class ActualizarUsuario extends javax.swing.JFrame {
-
+Usuario u;
     /**
      * Creates new form RegistroUsuario
      */
-    public ActualizarUsuario() {
+    public ActualizarUsuario(Usuario u) {
         initComponents();
+        this.u = u;
+        
+        txtdocumento.setText(u.getNombre());
+        txtNombre.setText(u.getNombre());
+        comboZona.setSelectedItem(u.getZona());
+        txtUbicacion.setText(u.getUbicacion());
     }
 
     /**
@@ -30,13 +38,13 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtdocumento = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
+        comboZona = new javax.swing.JComboBox<>();
+        txtUbicacion = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -46,7 +54,7 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(219, 236, 244));
 
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel1.setText("REGISTRO USUARIO");
+        jLabel1.setText("ACTUALIZAR USUARIO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,16 +80,16 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         jLabel2.setText("N.o Documento");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 30, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(219, 236, 244));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 27, 155, -1));
+        txtdocumento.setBackground(new java.awt.Color(219, 236, 244));
+        jPanel2.add(txtdocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 27, 155, -1));
 
-        jTextField2.setBackground(new java.awt.Color(219, 236, 244));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setBackground(new java.awt.Color(219, 236, 244));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 67, 155, -1));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 67, 155, -1));
 
         jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
@@ -95,20 +103,25 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         jLabel5.setText("Ubicacion");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 150, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(219, 236, 244));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una zona", "Comuna 1: Maria Eugenia-Pando", "Comuna 2: Central", "Comuna 3: Pescaito", "Comuna 4: Polideportivo-El jardin", "Comuna 5: Santa fe- Bastidas", "Comuna 6: Mamamtoco- 11 de noviembre", "Comuna 7: Gaira-Rodadero", "Comuna 8: Pozos colorado-Don jaca", "Comuna 9: Parque-Bureche", "Comuna 10: Bonda", "Comuna 11: Taganga", "Comuna 12: Minca", " " }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 107, 155, -1));
+        comboZona.setBackground(new java.awt.Color(219, 236, 244));
+        comboZona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una zona", "Comuna 1: Maria Eugenia-Pando", "Comuna 2: Central", "Comuna 3: Pescaito", "Comuna 4: Polideportivo-El jardin", "Comuna 5: Santa fe- Bastidas", "Comuna 6: Mamamtoco- 11 de noviembre", "Comuna 7: Gaira-Rodadero", "Comuna 8: Pozos colorado-Don jaca", "Comuna 9: Parque-Bureche", "Comuna 10: Bonda", "Comuna 11: Taganga", "Comuna 12: Minca", " " }));
+        jPanel2.add(comboZona, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 107, 155, -1));
 
-        jTextField3.setBackground(new java.awt.Color(219, 236, 244));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtUbicacion.setBackground(new java.awt.Color(219, 236, 244));
+        txtUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtUbicacionActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 147, 155, -1));
+        jPanel2.add(txtUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 147, 155, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 255, 153));
         jButton2.setText("Actualizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 102, 32));
 
         jButton3.setText("Cancelar");
@@ -138,13 +151,17 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUbicacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtUbicacionActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,15 +194,15 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ActualizarUsuario().setVisible(true);
+                //new ActualizarUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboZona;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -194,8 +211,8 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtUbicacion;
+    private javax.swing.JTextField txtdocumento;
     // End of variables declaration//GEN-END:variables
 }

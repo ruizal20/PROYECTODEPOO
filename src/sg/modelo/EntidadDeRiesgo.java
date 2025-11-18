@@ -1,9 +1,10 @@
 
 package sg.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class EntidadDeRiesgo {
+public class EntidadDeRiesgo implements Serializable{
     private int id;
     private String nombre;
     private boolean disponible;
