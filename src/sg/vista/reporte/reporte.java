@@ -4,6 +4,7 @@
  */
 package sg.vista.reporte;
 
+import javax.swing.JOptionPane;
 import sg.controlador.reporte.ControladorReporteGuardar;
 import sg.modelo.Usuario;
 
@@ -12,15 +13,15 @@ import sg.modelo.Usuario;
  * @author anyor
  */
 public class reporte extends javax.swing.JFrame {
+
     Usuario usuario;
-           
 
     /**
      * Creates new form reportaremergencia
      */
-    public reporte(Usuario usuario ) {
+    public reporte(Usuario usuario) {
         initComponents();
-        this.usuario=usuario;
+        this.usuario = usuario;
     }
 
     /**
@@ -244,19 +245,22 @@ public class reporte extends javax.swing.JFrame {
         String emergencia = (String) comboemergencia.getSelectedItem();
         String descripcion = txtDescripcion.getText();
         boolean heridos;
-        if(radiosi.isSelected()){
-            heridos=true;
+        if (radiosi.isSelected()) {
+            heridos = true;
+        } else {
+            heridos = false;
         }
-        else{
-            heridos=false;
-        }
-        
+
         String zona = comboZona.getSelectedItem().toString();
         String ubicacion = txtUbicacion.getText();
-        
+
         ControladorReporteGuardar control = new ControladorReporteGuardar();
-        control.guardar(emergencia, ubicacion, descripcion, heridos,usuario);
-        
+        if (control.guardar(emergencia, ubicacion, descripcion, heridos, usuario)) {
+            JOptionPane.showMessageDialog(null, "EMERGENCIA REPORTADA CON ÉXITO\n"
+                    + "\n"
+                    + "PRONTO LLEGRÁ UNA DE NUESTRAS ENTIDADES DE GESTIÓN DE RIESGOS A SU ZONA PARA ATENDER LA EMERGENCIA");
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -294,7 +298,7 @@ public class reporte extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new reporte().setVisible(true);
+                // new reporte().setVisible(true);
             }
         });
     }

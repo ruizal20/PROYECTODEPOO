@@ -171,7 +171,7 @@ public class RegistrarEntidad extends javax.swing.JFrame {
         else{
              Nombre = txtNombre.getText();
              if(controlador.guardar(ID, Nombre, true, null, 0)){
-                 JOptionPane.showMessageDialog(null, "Entidad agregada con exito");
+                 JOptionPane.showMessageDialog(null, "Entidad agregada con exito \n"+"Debe ingresar con su id");
                          
              }
              else{
