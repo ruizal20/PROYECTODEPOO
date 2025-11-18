@@ -4,17 +4,23 @@
  */
 package sg.vista.reporte;
 
+import sg.controlador.reporte.ControladorReporteGuardar;
+import sg.modelo.Usuario;
+
 /**
  *
  * @author anyor
  */
 public class reporte extends javax.swing.JFrame {
+    Usuario usuario;
+           
 
     /**
      * Creates new form reportaremergencia
      */
-    public reporte() {
+    public reporte(Usuario usuario ) {
         initComponents();
+        this.usuario=usuario;
     }
 
     /**
@@ -246,6 +252,10 @@ public class reporte extends javax.swing.JFrame {
         }
         
         String zona = comboZona.getSelectedItem().toString();
+        String ubicacion = txtUbicacion.getText();
+        
+        ControladorReporteGuardar control = new ControladorReporteGuardar();
+        control.guardar(emergencia, ubicacion, descripcion, heridos,usuario);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -284,7 +294,7 @@ public class reporte extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new reporte().setVisible(true);
+               // new reporte().setVisible(true);
             }
         });
     }
