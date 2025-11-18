@@ -13,8 +13,4 @@ public class ControladorUsuarioGuardar {
         return serv.addUsuario(usu);
     }
     
-
-   
-
-    
 }
