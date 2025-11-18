@@ -20,7 +20,7 @@ import sg.vista.entidad.iniciarsesionentidad;
  * @author anyor
  */
 public class Inicio extends javax.swing.JFrame {
-    ControladorUsuarioGuardar controlUsuGuar = new ControladorUsuarioGuardar();
+    ControladorUsuarioGuardar ControlUsuGuar = new ControladorUsuarioGuardar();
     ControladorUsuarioLogin controlLogin = new ControladorUsuarioLogin();
     ControladorUsuarioObtener controlObtener = new ControladorUsuarioObtener();
     ControladorEntidadDeRiesgoGuardar controlEntiGuar = new ControladorEntidadDeRiesgoGuardar();
@@ -117,7 +117,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        RegistroUsuario f = new RegistroUsuario(controlUsuGuar);
+        RegistroUsuario f = new RegistroUsuario(ControlUsuGuar);
         f.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
