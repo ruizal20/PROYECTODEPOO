@@ -146,16 +146,18 @@ public class GestionEmergencia {
         String emergencia = reporte.getTipoEmergencia();
         string zona = reporte.getZona();
         boolean existe = false;
+        Emergencia emeExistente = null;
 
         for (Emergencia eme : emergencias) {
             if (Arrays.asList(eme.getZonas()).contains(zona) && eme.getTipo().equals(emergencia)) {
                 existe = true;
+                emeExistente= eme;
                 break;
             }
         }
 
         if (existe) {
-            eme.addReporte(reporte);
+            emeExistente.addReporte(reporte);
 
         } else {
             ControladorEmergenciaGuardar conEmeGua = new ControladorEmergenciaGuardar();
@@ -165,6 +167,7 @@ public class GestionEmergencia {
             zonas[0]=zona;
             ArrayList<Reporte> reportes = new ArrayList<>();
             reportes.add(reporte);
+            
             
             EntidadDeRiesgo entidadQueAtiende = AsignarEntidad();
                        
