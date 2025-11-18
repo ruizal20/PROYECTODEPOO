@@ -24,6 +24,7 @@ public class ControladorEmergenciaGuardar {
             emerg.setFecha(fecha);
             emerg.setTipo(tipo);
             emerg.setZonas(zonas);
+            emerg.addReporte(reporte);
             emerg.setSeveridad(severidad);
             emerg.setEntidadQueAtiende(entidadQueAtiende);
         }

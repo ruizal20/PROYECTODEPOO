@@ -144,7 +144,7 @@ public class GestionEmergencia {
 
     public void gestionarEmergencia(Reporte reporte) {
         String emergencia = reporte.getTipoEmergencia();
-        string zona = reporte.getZona();
+        String zona = reporte.getZona();
         boolean existe = false;
         Emergencia emeExistente = null;
 
@@ -162,22 +162,28 @@ public class GestionEmergencia {
         } else {
             ControladorEmergenciaGuardar conEmeGua = new ControladorEmergenciaGuardar();
             int id = emergencias.size()+1;
-            String fecha = LocalDate.now();
-            String[] zonas;
-            zonas[0]=zona;
-            ArrayList<Reporte> reportes = new ArrayList<>();
-            reportes.add(reporte);
-            
-            
+            String fecha = LocalDate.now().toString();
+            String[] zonas= new String[100];
+            zonas[0]=zona; 
             EntidadDeRiesgo entidadQueAtiende = AsignarEntidad();
                        
-            conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0,reportes , entidadQueAtiende)
+            conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0,reporte , entidadQueAtiende);
+            cargarDatos();
+            entidadQueAtiende.setEmergenciaQueAtiende(emergencias.getLast());
 
         }
 
     }
     
     public EntidadDeRiesgo AsignarEntidad(){
+        EntidadDeRiesgo entidadSeleccionada = null;
+        for (EntidadDeRiesgo e : entidades) {
+            if(e.isDisponible()){
+                entidadSeleccionada=e;
+                break;
+            }
+        }
         
+        return entidadSeleccionada;
     }
 }
