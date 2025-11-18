@@ -123,6 +123,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jPanel2.add(btnRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 102, 32));
 
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 102, 32));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/imagenRegistro.png"))); // NOI18N
@@ -206,6 +211,10 @@ public class RegistroUsuario extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
