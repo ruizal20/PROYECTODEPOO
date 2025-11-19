@@ -144,7 +144,7 @@ public class GestionEmergencia {
 
     public void gestionarEmergencia(Reporte reporte) {
         String emergencia = reporte.getTipoEmergencia();
-        String zona = reporte.getZona();
+        string zona = reporte.getZona();
         boolean existe = false;
 
         for (Emergencia eme : emergencias) {
@@ -164,7 +164,7 @@ public class GestionEmergencia {
             String[] zonas;
             zonas[0]=zona;
                    
-            conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0, reporte, entidadQueAtiende);
+            conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0, reporte, entidadQueAtiende)
 
         }
 
