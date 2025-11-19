@@ -9,8 +9,8 @@ public class Incendio extends Emergencia{
         this.hectareasAfectadas = hectareasAfectadas;
     }
 
-    public Incendio(float hectareasAfectadas, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
-        super(id, causa, fecha, tipo, zonas, severidad, reportes, entidadQueAtiende);
+    public Incendio(float hectareasAfectadas, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, EntidadDeRiesgo entidadQueAtiende) {
+        super(id, causa, fecha, tipo, zonas, severidad, entidadQueAtiende);
         this.hectareasAfectadas = hectareasAfectadas;
     }
     

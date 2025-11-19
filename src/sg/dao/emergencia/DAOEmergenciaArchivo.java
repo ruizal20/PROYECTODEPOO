@@ -44,6 +44,21 @@ public class DAOEmergenciaArchivo implements DAOEmergencia{
             }
         }
     }
+    
+    @Override
+    public boolean actualizarDatosEmergencia(Emergencia emegActualizada) {
+        
+        List<Emergencia> emrg = listar();
+
+        for (int i = 0; i < emrg.size(); i++) {
+            if (emrg.get(i).getId() == emegActualizada.getId()) {
+                emrg.set(i, emegActualizada);
+                return guardarLista(emrg);
+            }
+        }
+        return false;
+       
+    }
 
     @Override
     public List<Emergencia> listar() {
@@ -61,5 +76,26 @@ public class DAOEmergenciaArchivo implements DAOEmergencia{
             emergencias = new ArrayList<>();
         }
         return emergencias;
+    }
+    
+    private boolean guardarLista(List<Emergencia> emergencias) { // Guarda las emergencias con todos los datos actualizados
+        FileOutputStream archi = null;
+        try {
+            archi = new FileOutputStream(archivo);
+            ObjectOutputStream salida = new ObjectOutputStream(archi);
+
+            salida.writeObject(emergencias);
+            salida.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(); // Muestra la línea exacta donde ocurrió el error
+            return false;
+        }finally{
+            try{
+                archi.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }

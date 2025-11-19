@@ -5,6 +5,7 @@
 package sg.vista.Usuario;
 
 import javax.swing.JOptionPane;
+import sg.controlador.usuario.ControladorUsuarioCargar;
 import sg.controlador.usuario.ControladorUsuarioGuardar;
 
 /**
@@ -14,6 +15,7 @@ import sg.controlador.usuario.ControladorUsuarioGuardar;
 public class RegistroUsuario extends javax.swing.JFrame {
     
     ControladorUsuarioGuardar controlador;
+    ControladorUsuarioCargar control;
 
     /**
      * Creates new form RegistroUsuario
@@ -203,13 +205,19 @@ public class RegistroUsuario extends javax.swing.JFrame {
            ubicacion = txtUbicacion.getText();
         }
         
-        if(controlador.guardar(cedula, nombre, zona, ubicacion)){
-            JOptionPane.showMessageDialog(null,"Usuario creado con exito \n su usuario es:" + nombre+" \n y su contraseña :"+cedula);
+        if (control.existeUsuario(cedula)) {
+            JOptionPane.showMessageDialog(null, "Ya existe un usuario regustrado con este numero de cedula");
+            return;
+        }else{
+            if(controlador.guardar(cedula, nombre, zona, ubicacion)){
+                JOptionPane.showMessageDialog(null,"Usuario creado con exito \n su usuario es:" + nombre+" \n y su contraseña :"+cedula);
+                limpiar();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Error al crear el usuario");
+            }
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Error al crear el usuario");
-        }
-            
+ 
     }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -250,7 +258,14 @@ public class RegistroUsuario extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void limpiar(){
+        txtCedula.setText(null);
+        txtNombre.setText(null);
+        txtUbicacion.setText(null);
+        comboZona.setSelectedItem(0);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarUsuario;
     private javax.swing.JComboBox<String> comboZona;

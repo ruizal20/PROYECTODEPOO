@@ -72,7 +72,8 @@ public class GestionEmergencia {
         entidades.add(entidad);
     }
 
-    public String listarXEmengencia(String tipo) {
+    public String listarXEmergencia(String tipo) {
+        cargarDatos();
         String list = "";
         for (Emergencia emergencia : emergencias) {
             if (emergencia.getTipo().equalsIgnoreCase(tipo)) {
@@ -83,6 +84,7 @@ public class GestionEmergencia {
     }
 
     public String listarXUsuario(String nomUsuario) {
+        cargarDatos();
         String list = "";
         for (Usuario usuario : usuarios) {
             if (usuario.getNombre().equalsIgnoreCase(nomUsuario)) {
@@ -93,9 +95,10 @@ public class GestionEmergencia {
     }
 
     public String listarXZona(String xZona) {
+        cargarDatos();
         String list = "";
         for (Emergencia emergencia : emergencias) {
-            if (emergencia.getZonas().equals(xZona)) {
+            if (Arrays.asList(emergencia.getZonas()).contains(xZona)) { // Toca manejarlo así por ser array
                 list += " " + emergencia.toString() + "\n";
             }
         }
@@ -103,16 +106,22 @@ public class GestionEmergencia {
     }
 
     public String listarXEntidad(String xEntidad) {
+        cargarDatos();
         String list = "";
+        
+        java.util.function.Function<Boolean, String> estadoToString =  
+            disp -> disp ? "Disponible" : "No disponible";
+        
         for (EntidadDeRiesgo entidad : entidades) {
             if (entidad.getNombre().equalsIgnoreCase(xEntidad)) {
-                list += " " + entidad.toString() + "\n";
+                list += " " + entidad.getId() + "\n" + entidad.getNombre() + "\n" + estadoToString.apply(entidad.isDisponible()) + "\n" + entidad.getCantEmergAtendidas();
             }
         }
         return list;
     }
 
     public float porcenEmergAtendXEntidad(String xEntidad) {
+        cargarDatos();
         float porcen = 0;
         for (EntidadDeRiesgo entidad : entidades) {
             if (entidad.getNombre().equalsIgnoreCase(xEntidad)) {
@@ -123,6 +132,7 @@ public class GestionEmergencia {
     }
 
     public float porcenXTipoEmergencia(String xTipo) {
+        cargarDatos();
         float porcen = 0, conta = 0;
         for (Emergencia emergencia : emergencias) {
             if (emergencia.getTipo().equalsIgnoreCase(xTipo)) {
@@ -144,29 +154,46 @@ public class GestionEmergencia {
 
     public void gestionarEmergencia(Reporte reporte) {
         String emergencia = reporte.getTipoEmergencia();
-        string zona = reporte.getZona();
+        String zona = reporte.getZona();
         boolean existe = false;
+        Emergencia emeExistente = null;
 
         for (Emergencia eme : emergencias) {
             if (Arrays.asList(eme.getZonas()).contains(zona) && eme.getTipo().equals(emergencia)) {
                 existe = true;
+                emeExistente= eme;
                 break;
             }
         }
 
         if (existe) {
-            eme.addReporte(reporte);
+            emeExistente.addReporte(reporte);
 
         } else {
             ControladorEmergenciaGuardar conEmeGua = new ControladorEmergenciaGuardar();
             int id = emergencias.size()+1;
-            String fecha = LocalDate.now();
-            String[] zonas;
-            zonas[0]=zona;
-                   
-            conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0, reporte, entidadQueAtiende)
+            String fecha = LocalDate.now().toString();
+            String[] zonas= new String[100];
+            zonas[0]=zona; 
+            EntidadDeRiesgo entidadQueAtiende = AsignarEntidad();
+                       
+            conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0,reporte , entidadQueAtiende);
+            cargarDatos();
+            entidadQueAtiende.setEmergenciaQueAtiende(emergencias.getLast());
 
         }
 
+    }
+    
+    public EntidadDeRiesgo AsignarEntidad(){
+        EntidadDeRiesgo entidadSeleccionada = null;
+        for (EntidadDeRiesgo e : entidades) {
+            if(e.isDisponible()){
+                entidadSeleccionada=e;
+                break;
+            }
+        }
+        
+        return entidadSeleccionada;
     }
 }

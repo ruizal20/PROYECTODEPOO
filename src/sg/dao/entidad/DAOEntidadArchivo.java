@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sg.modelo.Emergencia;
 import sg.modelo.EntidadDeRiesgo;
 
 public class DAOEntidadArchivo implements DAOEntidad{
@@ -39,16 +40,13 @@ public class DAOEntidadArchivo implements DAOEntidad{
             return false;
         } finally { 
             try {
-                archi.close();
+                if (archi != null) {
+                    archi.close();
+                }
             } catch (IOException ex) {
                 Logger.getLogger(DAOEntidad.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-
-    @Override
-    public boolean actualizarDatos(EntidadDeRiesgo entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
