@@ -6,11 +6,12 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import sg.controlador.entidad.ControladorEntidadListar;
+import sg.dao.usuario.DAOUsuarioArchivo;
 import sg.modelo.Emergencia;
 import sg.modelo.EntidadDeRiesgo;
 import sg.modelo.GestionEmergencia;
 import sg.modelo.Usuario;
+import sg.vista.Inicio;
 
 /**
  *
@@ -18,12 +19,14 @@ import sg.modelo.Usuario;
  */
 public class PrincipalAdmin extends javax.swing.JFrame {
     GestionEmergencia gest = GestionEmergencia.getInstancia();
+    Inicio ini;
     
     /**
      * Creates new form PrincipalAdmin
      */
-    public PrincipalAdmin() {
+    public PrincipalAdmin(Inicio ini) {
         initComponents();
+        this.ini = ini;
     }
 
     /**
@@ -42,6 +45,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         todosLosUsuarios = new javax.swing.JButton();
         todasLasEmergencias = new javax.swing.JButton();
         todasLasEntidades = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -119,6 +123,14 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jButton1.setText("ATRAS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,16 +139,16 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(todasLasEntidades, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(todosLosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                        .addComponent(porcentajeAtendidas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscarXEntidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(todosLosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                    .addComponent(porcentajeAtendidas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buscarXEntidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(porcentajeXTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buscarXUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buscarXZona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(todasLasEmergencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(todasLasEmergencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -162,7 +174,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                     .addComponent(todosLosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(todasLasEmergencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
-                .addComponent(todasLasEntidades, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(todasLasEntidades, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(92, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -195,7 +209,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarXUsuarioActionPerformed
 
     private void todosLosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todosLosUsuariosActionPerformed
-        List<Usuario> lista = gest.getUsuarios();
+        DAOUsuarioArchivo dao = new DAOUsuarioArchivo();
+        List<Usuario> lista = dao.listar();
         
         String[] columnas = {"Nombre", "Cedula", "Zona", "Ubicacion"};
         Object[][] filas = new Object[lista.size()][4];
@@ -268,6 +283,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, scroll, "Listado de entidades", JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_todasLasEntidadesActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ini.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -298,7 +318,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalAdmin().setVisible(true);
+                //new PrincipalAdmin().setVisible(true);
             }
         });
     }
@@ -308,6 +328,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton buscarXEntidad;
     private javax.swing.JButton buscarXUsuario;
     private javax.swing.JButton buscarXZona;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton porcentajeAtendidas;
     private javax.swing.JButton porcentajeXTipo;
     private javax.swing.JButton todasLasEmergencias;

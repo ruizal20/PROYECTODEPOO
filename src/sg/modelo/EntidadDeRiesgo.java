@@ -64,7 +64,7 @@ public class EntidadDeRiesgo implements Serializable{
 
     @Override
     public String toString() {
-        return "EntidadDeRiesgo{" + "id = " + id + ", nombre = " + nombre + ", disponible = " + disponible + ", emergenciaQueAtiende = " + emergenciaQueAtiende + ", cantEmergAtendida = " + cantEmergAtendidas + '}';
+        return "EntidadDeRiesgo:" + "ID = " + id + " Nombre = " + nombre + " Estado = " + disponible + " Emergencia que atiende = " + emergenciaQueAtiende + "Cant emergencias atendidas = " + cantEmergAtendidas + '.';
     }
     
     public boolean actualizarDatosEmergencia(int idEmergencia, String tipo, String causa, String fecha, String[] zonas, int severidad){

@@ -7,6 +7,7 @@ package sg.vista.Usuario;
 import sg.controlador.usuario.ControladorUsuarioLogin;
 import sg.controlador.usuario.ControladorUsuarioObtener;
 import sg.modelo.Usuario;
+import sg.vista.Inicio;
 
 
 public class IniciarSesionUsuario extends javax.swing.JFrame {
@@ -134,11 +135,13 @@ public class IniciarSesionUsuario extends javax.swing.JFrame {
 
     private void btnIniciarSesionUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionUsuarioActionPerformed
         // TODO add your handling code here:
+        Inicio ini = new Inicio();
         if(controlador.iniciarSesion(txtUsuario.getText(),txtContrasena.getText())){
             int cedula=Integer.parseInt(txtContrasena.getText());
             Usuario u = con2.getOne(cedula);
-            PrincipalUsuario f = new PrincipalUsuario(u);
+            PrincipalUsuario f = new PrincipalUsuario(u, ini);
             f.setVisible(true);
+            this.dispose();
         }
         else{
             System.out.println("usuario no encontrado");

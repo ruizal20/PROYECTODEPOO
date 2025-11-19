@@ -4,9 +4,11 @@
  */
 package sg.vista.Usuario;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sg.controlador.usuario.ControladorUsuarioCargar;
 import sg.controlador.usuario.ControladorUsuarioGuardar;
+import sg.vista.Inicio;
 
 /**
  *
@@ -16,13 +18,15 @@ public class RegistroUsuario extends javax.swing.JFrame {
     
     ControladorUsuarioGuardar controlador;
     ControladorUsuarioCargar control = new ControladorUsuarioCargar();
+    private Inicio ini;
 
     /**
      * Creates new form RegistroUsuario
      */
-    public RegistroUsuario(ControladorUsuarioGuardar controlador) {
+    public RegistroUsuario(ControladorUsuarioGuardar controlador, Inicio ini) {
         initComponents();
         this.controlador = controlador;
+        this.ini = ini;
     }
 
     /**
@@ -221,7 +225,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        ini.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

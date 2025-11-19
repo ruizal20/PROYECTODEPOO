@@ -7,4 +7,5 @@ import sg.modelo.Usuario;
 public interface DAOUsuario {
     boolean guardar(Usuario usuario);
     List<Usuario> listar();
+    boolean eliminar(int cedula);
 }

@@ -5,7 +5,13 @@
 package sg.vista.Usuario;
 
 import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JOptionPane;
+import sg.controlador.usuario.ControladorUsuarioEditar;
+import sg.controlador.usuario.ControladorUsuarioEliminar;
+import sg.controlador.usuario.ControladorUsuarioGuardar;
 import sg.modelo.Usuario;
+import sg.vista.Inicio;
 import sg.vista.reporte.reporte;
 
 /**
@@ -14,19 +20,21 @@ import sg.vista.reporte.reporte;
  */
 public class PrincipalUsuario extends javax.swing.JFrame {
     Usuario usuario;
+    private Inicio ini;
     
 
     /**
      * Creates new form PrincipalUsuario
      */
-    public PrincipalUsuario(Usuario u) {
+    public PrincipalUsuario(Usuario u, Inicio ini) {
         initComponents();
         this.usuario=u;
+        this.ini = ini;
         lblNombre.setText(u.getNombre());
         CardLayout c1 = (CardLayout) contenido.getLayout();
         c1.show(contenido, "card2");
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,6 +110,11 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         jButton8.setActionCommand("");
         jButton8.setBorder(null);
         jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sg/imagenes/User_Circle - copia.png"))); // NOI18N
@@ -342,8 +355,24 @@ public class PrincipalUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         reporte f = new reporte(usuario);
         f.setVisible(true);
-        
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        int confirmar = JOptionPane.showConfirmDialog(this, "Esta seguro de querer eliminar la cuenta?", "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmar == JOptionPane.YES_NO_OPTION) {
+            ControladorUsuarioEliminar control = new ControladorUsuarioEliminar();
+            boolean eliminado = control.eliminarUsuario(usuario.getCedula());
+            if (eliminado) {
+                JOptionPane.showMessageDialog(null, "Cuenta eliminada correctamente");
+                ini.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar la cuenta");
+            }
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
