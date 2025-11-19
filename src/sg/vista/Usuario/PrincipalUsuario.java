@@ -6,6 +6,7 @@ package sg.vista.Usuario;
 
 import java.awt.CardLayout;
 import sg.modelo.Usuario;
+import sg.vista.reporte.reporte;
 
 /**
  *
@@ -339,6 +340,8 @@ public class PrincipalUsuario extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        reporte f = new reporte(usuario);
+        f.setVisible(true);
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
