@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import sg.dao.emergencia.DAOEmergenciaArchivo;
 import sg.dao.usuario.DAOUsuarioArchivo;
 import sg.modelo.Emergencia;
 import sg.modelo.EntidadDeRiesgo;
@@ -241,7 +242,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_porcentajeAtendidasActionPerformed
 
     private void todasLasEmergenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todasLasEmergenciasActionPerformed
-        List<Emergencia> lista = gest.getEmergencias();
+        DAOEmergenciaArchivo dao = new DAOEmergenciaArchivo();
+        List<Emergencia> lista = dao.listar();
         String[] columnas = {"ID", "Tipo", "Casua", "Fecha", "Zona", "Severidad"};
         Object[][] filas = new Object[lista.size()][6];
         

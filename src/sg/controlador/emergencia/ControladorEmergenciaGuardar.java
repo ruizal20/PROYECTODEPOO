@@ -17,6 +17,7 @@ public class ControladorEmergenciaGuardar {
         Emergencia emerg = fabrica.getEmergencia(tipo);
         
         if (emerg == null) {
+            System.out.println("devuelve emergencia nulo");
             return false;
         }else{
             emerg.setId(id);
@@ -27,6 +28,10 @@ public class ControladorEmergenciaGuardar {
             emerg.addReporte(reporte);
             emerg.setSeveridad(severidad);
             emerg.setEntidadQueAtiende(entidadQueAtiende);
+            System.out.println("creo la emergencia");
+            
+            System.out.println(emerg.getTipo());
+            System.out.println(emerg.getFecha());
         }
         return servEmergencia.addEmergencia(emerg);
     }

@@ -7,6 +7,7 @@ import sg.controlador.emergencia.ControladorEmergenciaCargar;
 import sg.controlador.emergencia.ControladorEmergenciaGuardar;
 import sg.controlador.entidad.ControladorEntidadCargar;
 import sg.controlador.usuario.ControladorUsuarioCargar;
+import sg.dao.emergencia.DAOEmergenciaArchivo;
 
 public class GestionEmergencia {
 
@@ -155,6 +156,7 @@ public class GestionEmergencia {
         String zona = reporte.getZona();
         boolean existe = false;
         Emergencia emeExistente = null;
+        DAOEmergenciaArchivo dao = new DAOEmergenciaArchivo();
 
         for (Emergencia eme : emergencias) {
             if (eme.getZonas()!=null && Arrays.asList(eme.getZonas()).contains(zona) && eme.getTipo().equals(emergencia)) {
@@ -166,7 +168,7 @@ public class GestionEmergencia {
 
         if (existe) {
             emeExistente.addReporte(reporte);
-
+            dao.actualizarDatosEmergencia(emeExistente);
         } else {
             ControladorEmergenciaGuardar conEmeGua = new ControladorEmergenciaGuardar();
             int id = emergencias.size()+1;
@@ -174,11 +176,10 @@ public class GestionEmergencia {
             String[] zonas= new String[100];
             zonas[0]=zona; 
             EntidadDeRiesgo entidadQueAtiende = AsignarEntidad();
-                       
+            
             conEmeGua.guardar(id, "",fecha , emergencia, zonas, 0,reporte , entidadQueAtiende);
             cargarDatos();
             entidadQueAtiende.setEmergenciaQueAtiende(emergencias.getLast());
-
         }
 
     }

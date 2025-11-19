@@ -14,15 +14,14 @@ import java.util.logging.Logger;
 import sg.modelo.Emergencia;
 
 public class DAOEmergenciaArchivo implements DAOEmergencia{
-    private String archivo = "Emergencia.doc";
+    private String archivo = "Emergencia.data";
 
     @Override
     public boolean guardar(Emergencia emergencia) {
         FileOutputStream archi = null;
        
         try {
-            List<Emergencia> emergencias = new ArrayList<>();
-            emergencias = listar();
+            List<Emergencia> emergencias = listar();
             emergencias.add(emergencia);
             archi = new FileOutputStream(archivo); 
             ObjectOutputStream salida = new ObjectOutputStream(archi); 
