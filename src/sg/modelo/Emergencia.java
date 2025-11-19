@@ -9,7 +9,7 @@ public abstract class Emergencia {
     private String tipo;
     private String[] zonas;
     private int severidad;
-    private ArrayList<Reporte> reportes;
+    private ArrayList<Reporte> reportes = new ArrayList<>();
     private EntidadDeRiesgo entidadQueAtiende;
 
     public Emergencia() {

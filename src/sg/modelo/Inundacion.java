@@ -1,8 +1,10 @@
 package sg.modelo;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inundacion extends Emergencia{
+public class Inundacion extends Emergencia implements Serializable{
    private int nivelDelAgua; 
 
     public Inundacion(int nivelDelAgua) {

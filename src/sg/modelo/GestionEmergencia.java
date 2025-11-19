@@ -157,7 +157,7 @@ public class GestionEmergencia {
         Emergencia emeExistente = null;
 
         for (Emergencia eme : emergencias) {
-            if (Arrays.asList(eme.getZonas()).contains(zona) && eme.getTipo().equals(emergencia)) {
+            if (eme.getZonas()!=null && Arrays.asList(eme.getZonas()).contains(zona) && eme.getTipo().equals(emergencia)) {
                 existe = true;
                 emeExistente= eme;
                 break;

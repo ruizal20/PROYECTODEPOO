@@ -15,7 +15,7 @@ import sg.modelo.Reporte;
 
 public class DAOReporteArchivo implements DAOReporte{
     
-    private String archivo = "Reporte.doc";
+    private String archivo = "Reporte.data";
 
     @Override
     public boolean guardar(Reporte reporte) {

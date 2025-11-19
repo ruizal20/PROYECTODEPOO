@@ -1,8 +1,9 @@
 package sg.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Terremoto extends Emergencia{
+public class Terremoto extends Emergencia implements Serializable{
    private float magnitud;
    private boolean esReplica;
 

@@ -1,8 +1,9 @@
 package sg.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Incendio extends Emergencia{
+public class Incendio extends Emergencia implements Serializable{
     private float hectareasAfectadas;
 
     public Incendio(float hectareasAfectadas) {

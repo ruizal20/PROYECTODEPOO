@@ -15,7 +15,7 @@ import sg.controlador.usuario.ControladorUsuarioGuardar;
 public class RegistroUsuario extends javax.swing.JFrame {
     
     ControladorUsuarioGuardar controlador;
-    ControladorUsuarioCargar control;
+    ControladorUsuarioCargar control = new ControladorUsuarioCargar();
 
     /**
      * Creates new form RegistroUsuario

@@ -2,10 +2,14 @@ package sg.vista.reporte;
 
 import javax.swing.JOptionPane;
 import sg.controlador.reporte.ControladorReporteGuardar;
+import sg.modelo.GestionEmergencia;
+import sg.modelo.Reporte;
 import sg.modelo.Usuario;
+
 public class reporte extends javax.swing.JFrame {
 
     Usuario usuario;
+
     public reporte(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
@@ -41,7 +45,7 @@ public class reporte extends javax.swing.JFrame {
         txtUbicacion = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(219, 236, 244));
 
@@ -242,13 +246,12 @@ public class reporte extends javax.swing.JFrame {
         String zona = comboZona.getSelectedItem().toString();
         String ubicacion = txtUbicacion.getText();
 
-        ControladorReporteGuardar control = new ControladorReporteGuardar();
-        
-        if (control.guardar(emergencia, ubicacion,zona, descripcion, heridos, usuario)) {
-            JOptionPane.showMessageDialog(null, "EMERGENCIA REPORTADA CON ÉXITO\n"
-                    + "\n"
-                    + "PRONTO LLEGRÁ UNA DE NUESTRAS ENTIDADES DE GESTIÓN DE RIESGOS A SU ZONA PARA ATENDER LA EMERGENCIA");
-        }
+        Reporte repo = new Reporte(emergencia, zona, ubicacion, descripcion, heridos, usuario);
+        GestionEmergencia gestion = GestionEmergencia.getInstancia();
+        gestion.gestionarEmergencia(repo);
+        JOptionPane.showMessageDialog(null, "EMERGENCIA REPORTADA CON ÉXITO\n"
+                + "\n"
+                + "PRONTO LLEGRÁ UNA DE NUESTRAS ENTIDADES DE GESTIÓN DE RIESGOS A SU ZONA PARA ATENDER LA EMERGENCIA");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
