@@ -15,7 +15,7 @@ public abstract class Emergencia {
     public Emergencia() {
     }
 
-    public Emergencia(int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
+    public Emergencia(int id, String causa, String fecha, String tipo, String[] zonas, int severidad, EntidadDeRiesgo entidadQueAtiende) {
         this.id = id;
         this.causa = causa;
         this.fecha = fecha;
@@ -34,7 +34,7 @@ public abstract class Emergencia {
         return reportes.size();
     }
     
-    ArrayList<String> listarReporte() {
+    public ArrayList<String> listarReporte() {
 
         ArrayList<String> lista = new ArrayList<>();
         for (Reporte r : reportes) {

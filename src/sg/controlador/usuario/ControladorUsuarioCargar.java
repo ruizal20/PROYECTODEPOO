@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package sg.controlador.usuario;
 
 import java.util.ArrayList;
@@ -18,4 +15,13 @@ public class ControladorUsuarioCargar {
         return serv.getUsuarios();
     }
     
+    public boolean existeUsuario(int cedula){
+        ArrayList<Usuario> usuarios = cargar();
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCedula() == cedula) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

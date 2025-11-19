@@ -13,8 +13,8 @@ public class Vendaval extends Emergencia{
         this.danosinfraEstructura = danosinfraEstructura;
     }
 
-    public Vendaval(float velocidadViento, boolean afectacionServicios, boolean danosinfraEstructura, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
-        super(id, causa, fecha, tipo, zonas, severidad, reportes, entidadQueAtiende);
+    public Vendaval(float velocidadViento, boolean afectacionServicios, boolean danosinfraEstructura, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, EntidadDeRiesgo entidadQueAtiende) {
+        super(id, causa, fecha, tipo, zonas, severidad, entidadQueAtiende);
         this.velocidadViento = velocidadViento;
         this.afectacionServicios = afectacionServicios;
         this.danosinfraEstructura = danosinfraEstructura;

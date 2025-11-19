@@ -11,8 +11,8 @@ public class Terremoto extends Emergencia{
         this.esReplica = esReplica;
     }
 
-    public Terremoto(float magnitud, boolean esReplica, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, ArrayList<Reporte> reportes, EntidadDeRiesgo entidadQueAtiende) {
-        super(id, causa, fecha, tipo, zonas, severidad, reportes, entidadQueAtiende);
+    public Terremoto(float magnitud, boolean esReplica, int id, String causa, String fecha, String tipo, String[] zonas, int severidad, EntidadDeRiesgo entidadQueAtiende) {
+        super(id, causa, fecha, tipo, zonas, severidad, entidadQueAtiende);
         this.magnitud = magnitud;
         this.esReplica = esReplica;
     }

@@ -12,6 +12,7 @@ import sg.controlador.usuario.ControladorUsuarioLogin;
 import sg.controlador.usuario.ControladorUsuarioObtener;
 import sg.vista.Usuario.IniciarSesionUsuario;
 import sg.vista.Usuario.RegistroUsuario;
+import sg.vista.admin.PrincipalAdmin;
 import sg.vista.entidad.RegistrarEntidad;
 import sg.vista.entidad.iniciarsesionentidad;
 
@@ -129,6 +130,8 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        PrincipalAdmin f = new PrincipalAdmin();
+        f.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

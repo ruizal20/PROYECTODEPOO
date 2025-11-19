@@ -73,6 +73,7 @@ class EntidadDeRiesgo{
 
 class Reporte{
     -String tipoEmergencia
+    -String[] zona
     -String ubicacion
     -String descripcion
     -bool heridosVisibles
@@ -105,7 +106,7 @@ Vendaval -up-|> Emergencia
 Reporte "* " -up-* "1  " Emergencia
 Reporte "* " -up- "*  " Usuario
 Emergencia .right.. EmergenciaFactory : uses
-EntidadDeRiesgo "1.." <-up-> "1" Emergencia
+EntidadDeRiesgo "1.." -up- "1" Emergencia
 GestionEmergencia "1 " *-down- "* " Usuario 
 GestionEmergencia "1 " *-right- "  * " Emergencia 
 GestionEmergencia "1 " *-up- "1.." EntidadDeRiesgo 
